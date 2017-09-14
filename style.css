@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+* {
+  outline: none;
+}
+
+body {
+  background-color:white;
+}
+
+.header {
+  background-color: #ddd;
+  padding: 10px 0 12px;
+}
+
+.header .title {
+  width: 960px;
+  margin: 0 auto;
+  font: 36px/1 'Segoe UI','Microsoft Yahei',SimSun,'Wenquanyi Micro Hei',Ubuntu;
+  text-align:center;
+}
+
+.main {
+  width: 1060px;
+  margin: 10px auto;
+}
+
+.left, .right {
+  width: 380px;
+  float: left;
+  text-align: center;
+}
+
+.left div {
+  text-align: left;
+}
+
+.middle {
+  width: 200px;
+  float: left;
+  text-align: center;
+}
+
+.middle button {
+  margin-top: 100px;
+  margin-left: 40px;
+}
+
+.clear {
+  clear: both;
+}
+
+textarea {
+  height: 434px;
+  width: 100%;
+  resize: none;
+  margin: 10px 0 20px;
+  text-align: left;
+}
+
+.left textarea {
+  padding-right: 30px!important;
+}
+
+#p1{
+  width: 100px;
+}
+
+.inleft {
+  width: 110px;
+  float: left;
+  height: 40px;
+}
+
+.inright {
+  float: left;
+  width: 315px;
+  height: 40px;
+  font: 16px/20px 'Segoe UI','Microsoft Yahei',SimSun,'Wenquanyi Micro Hei',Ubuntu;
+}
+
+input[type=radio] {
+  outline: none!important;
+}
+
+.tool {
+  z-index: 6;
+  width: 35px;
+  margin-left: -34px;
+  margin-top: 18px;
+  height: 90px;
+}
+
+#clear {
+  background: url(../img/clear.png) center center no-repeat;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+button img {
+  vertical-align: middle;
+}
+
+.bluebutton {
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    background-color: #55a7e3;
+    border: none;
+    font-size: 14px;
+}
+
+
+.footer {
+  font: 16px/28px 'Segoe UI','Microsoft Yahei',SimSun,'Wenquanyi Micro Hei',Ubuntu;
+  text-align: center;
+  margin: 16px 0;

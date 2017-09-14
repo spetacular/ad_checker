@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>广告违禁词检查工具-text.wiki,关于文本的一切,All About Text</title>
+  <meta name="keywords" content="广告敏感词，违禁词检查工具" />
+  <meta name="description" content="广告敏感词，违禁词检查工具" />
+  
+<script src="https://npmcdn.com/vue@1.0.26/dist/vue.min.js"></script>
+<script src="https://npmcdn.com/vue-resource@0.9.3/dist/vue-resource.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+
+<!-- 顶部代码开始 -->
+<div class="header">
+  <div class="title">
+    广告违禁词检查工具
+  </div>
+</div>
+<!-- 顶部代码结束 -->
+<!-- 核心部分开始 -->
+<div class="main" id="app">
+<textarea name="words" size="60" style="height: 300px;" placeholder="请输入要检查的内容" v-model="text"></textarea>
+
+  <input type="submit" value="检查" class="bluebutton" v-on:click="check_block">
+  <p>{{{ message }}}</p>
+<!-- 核心部分结束 -->
+<!-- 尾部代码开始 -->
+<div class="footer">  
+ <a href="https://github.com/spetacular/ad_checker" target="_blank">广告违禁词检查工具开源项目</a>   
+</div>
+
+
+<!-- 尾部代码结束 -->
+</body>
+<script type='text/javascript'>//<![CDATA[
+window.onload=function(){
+new Vue({
+    el: '#app',
+    data: {
+      message: '',
+    },
+    methods: {
+      check_block: function () {
+        if(this.text == ''){
+          return false;
+        }
+        this.message = '';
+        var formData = new FormData();
+
+        // append string
+        formData.append('text', this.text);
+
+        this.$http.post('check_ad_blocked.php',formData).then(function(res){
+                var words = JSON.parse(res['data']);
+                if(words.length == 0){
+                  this.message = '不包含广告违禁词';
+                  return;
+                }
+
+                for(x in words){
+                  var word = words[x]
+                  this.message += "<font color='red'>"+word[0]+"</font>&nbsp;是违禁词，原因:&nbsp;<font color='red'>"+word[1]+"</font><br/>";
+                }
+            },function (data){
+                this.message = '服务器错误，请稍后再试'
+                console.log(data);
+            });
+        
+      }
+    }
+})
+}//]]> 
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?12d5faabb08b3c592685fecea13c9f62";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</html>
+
+      
