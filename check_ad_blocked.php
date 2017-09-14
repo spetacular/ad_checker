@@ -4,7 +4,7 @@
 * site:http://spetacular.github.io/
 * weibo:http://weibo.com/mylxq
 */
-
+$text = isset($_POST['text']) ? $_POST['text'] : '';
 if(!$text){echo '[]';}
 
 $obj = new MaxWordSegmentation();
